@@ -25,7 +25,7 @@ class FichasTecnicasSpider(scrapy.Spider):
             item.add_value('Image', phone.css('img').attrib['style'])
             item.add_value('Score', phone.xpath('div[1]/div/strong/text()').get())
             item.add_value('Price', phone.xpath('div[2]/div/a[1]/span[2]/text()').get())
-            item.add_value('Details_url', phone.xpath('a[@class="pic"]').attrib['href'])
+            item.add_value('Url', self.url + phone.xpath('a[@class="pic"]').attrib['href'])
 
             yield item.load_item()
 
