@@ -1,5 +1,5 @@
 import re
-from datetime import datetime
+
 from scrapy.item import Item, Field
 from itemloaders.processors import MapCompose, TakeFirst
 
@@ -23,4 +23,5 @@ class SmartphoneItem(Item):
     Score = Field(output_processor=TakeFirst())
     Price = Field(input_processor=MapCompose(parse_preco), output_processor=TakeFirst())
     Url = Field(output_processor=TakeFirst())
-    Extracted_at = datetime.now().isoformat()
+    Details = Field(output_processor=TakeFirst())
+    Extracted_at = Field(output_processor=TakeFirst())
