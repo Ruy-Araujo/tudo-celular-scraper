@@ -34,9 +34,9 @@ class FichasTecnicasSpider(scrapy.Spider):
             yield scrapy.Request(details_url, callback=self.parse_details, meta={'item': item})
 
         # Paginate
-        # self.page += 1
-        # next_page = f"{self.url}/celulares/fichas-tecnicas_{self.page}.html"
-        # yield response.follow(url=next_page, callback=self.parse)
+        self.page += 1
+        next_page = f"{self.url}/celulares/fichas-tecnicas_{self.page}.html"
+        yield response.follow(url=next_page, callback=self.parse)
 
     def parse_details(self, response):
         item = response.meta['item']
